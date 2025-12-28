@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="kailleraprotocol-jvm">
+    <output-path>$PROJECT_DIR$/kailleraprotocol/build/libs</output-path>
+    <root id="archive" name="kailleraprotocol-jvm.jar">
+      <element id="module-output" name="KailleraProtocol-kmp.kailleraprotocol.jvmMain" />
+    </root>
+  </artifact>
+</component>
