@@ -40,6 +40,20 @@ To build the entire project (including tests and linting):
 ./gradlew build
 ```
 
+### Run Benchmarks
+
+To run JMH benchmarks, run:
+
+```bash
+./gradlew clean :benchmarks:jmh
+```
+
+To just check that they are working, add the flag `-PjmhDryRun`.
+
+```bash
+./gradlew clean :benchmarks:jmh -PjmhDryRun
+```
+
 ## Guidelines
 
 ### Formatting

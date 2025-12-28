@@ -15,3 +15,5 @@ pluginManagement {
 rootProject.name = "KailleraProtocol-kmp"
 
 include("kailleraprotocol")
+
+include("benchmarks")
