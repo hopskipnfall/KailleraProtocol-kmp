@@ -1,4 +1,7 @@
-plugins { kotlin("multiplatform") }
+plugins {
+  kotlin("multiplatform")
+  id("org.jetbrains.dokka")
+}
 
 kotlin {
   jvm()
@@ -23,3 +26,6 @@ kotlin {
     }
   }
 }
+
+// kdoc generation support.
+subprojects { apply(plugin = "org.jetbrains.dokka") }
