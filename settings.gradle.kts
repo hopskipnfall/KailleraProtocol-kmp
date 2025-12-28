@@ -4,6 +4,14 @@
  * This project uses @Incubating APIs which are subject to change.
  */
 
+pluginManagement {
+  repositories {
+    google()
+    gradlePluginPortal()
+    mavenCentral()
+  }
+}
+
 rootProject.name = "KailleraProtocol-kmp"
 
 include("kailleraprotocol")
