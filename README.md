@@ -2,9 +2,29 @@
 
 This is a Kotlin Multiplatform library for efficiently working with Kaillera protocol messages accurately across various languages. It is used by the server [EmuLinker-K (elk)](https://github.com/hopskipnfall/EmuLinker-K).
 
-## V086Bundle and GameData
 
-The library provides structures to handle Kaillera protocol messages (v0.86). For example:
+## Supported Targets
+
+- **JVM** (Java, Kotlin)
+- **Javascript** (Browser, Node.js)
+- **Native**:
+  - Linux (x64)
+  - Windows (MinGW x64)
+  - macOS (x64, arm64)
+  - iOS (x64, arm64, Simulator arm64)
+
+
+### Supported Encodings
+
+The library provides cross-platform support for the following encodings. Note that `ISO-8859-1` is explicitly optimized and supported on all targets as it is the most common.
+
+| Encoding                     | JVM | Native (Unix/Win)                       | JS                |
+|------------------------------|-----|-----------------------------------------|-------------------|
+| **ISO-8859-1** / **Latin-1** | ✅   | ✅ (Manual)                              | ✅ (Manual)        |
+| **UTF-8**                    | ✅   | ✅                                       | ✅                 |
+| **Shift_JIS** (Japanese)     | ✅   | Partial (Available if host supports it) | Browser dependent |
+| **Windows-1251** (Cyrillic)  | ✅   | Partial (Available if host supports it) | Browser dependent |
+| **EUC-KR** (Korean)          | ✅   | Partial (Available if host supports it) | Browser dependent |
 
 ## Usage Examples
 
@@ -66,4 +86,38 @@ const gameData = new org.emulinker.kaillera.protocol.v086.GameData(100, inputPay
 const bundle = new org.emulinker.kaillera.protocol.v086.V086Bundle.Single(gameData);
 
 console.log("Bundle created:", bundle);
+```
+
+### Swift (iOS / macOS)
+
+The library compiles to an Objective-C framework that can be used from Swift.
+
+```swift
+import KailleraProtocol // Or the name of the framework you generate
+
+func example() {
+    // 1. Create the input data
+    // In Swift, [Int8] maps to KotlinByteArray
+    let inputPayload: [Int8] = [0x01, 0x02]
+    
+    // KotlinByteArray handling might vary slightly depending on KMP version/export.
+    // Often you need to convert Swift array to KotlinByteArray if the API demands it explicitly,
+    // or sometimes it maps automatically. 
+    // For specific interop, you might use a helper function or direct instantiation.
+    // Assuming standard KMP mapping:
+    let kotlinByteArray = KotlinByteArray(size: Int32(inputPayload.count))
+    for (index, byte) in inputPayload.enumerated() {
+        kotlinByteArray.set(index: Int32(index), value: byte)
+    }
+
+    // 2. Create the GameData message
+    let gameData = GameData(messageNumber: 100, gameData: kotlinByteArray)
+
+    // 3. Wrap it in a V086Bundle
+    // Note: Sealed classes in KMP often map to specific subclasses in ObjC/Swift
+    let bundle = V086BundleSingle(value: gameData)
+
+    // 4. Serialize
+    print("Bundle created: \(bundle)")
+}
 ```

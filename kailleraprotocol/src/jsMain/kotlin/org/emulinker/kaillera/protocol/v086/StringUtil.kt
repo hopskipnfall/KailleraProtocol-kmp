@@ -26,11 +26,19 @@ actual object StringUtil {
     if (charset.uppercase() == "ISO-8859-1" || charset.uppercase() == "US-ASCII") {
       val sb = StringBuilder()
       for (b in bytes) {
-        sb.append(b.toInt().toChar())
+        sb.append((b.toInt() and 0xFF).toChar())
       }
       return sb.toString()
     }
-    return TextDecoder(charset).decode(bytes)
+    // Attempt to use arbitrary charset label with TextDecoder
+    return try {
+      TextDecoder(charset).decode(bytes)
+    } catch (e: dynamic) {
+      // Fallback or rethrow?
+      // If the browser doesn't support the charset label, it might throw RangeError
+      // Fallback to decodeToString (UTF-8)
+      bytes.decodeToString()
+    }
   }
 
   actual fun readString(source: Source, charset: String): String {
