@@ -1,0 +1,1 @@
+sourceset_dependencies='{":kailleraprotocol/commonMain":[],":kailleraprotocol/jsMain":[":kailleraprotocol/commonMain"],":kailleraprotocol/jvmMain":[":kailleraprotocol/commonMain"]}'

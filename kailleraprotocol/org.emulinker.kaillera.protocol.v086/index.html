@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>org.emulinker.kaillera.protocol.v086</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../index.html">
+                    kailleraprotocol
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active=""
+                        data-filter=":kailleraprotocol/commonMain">common</button>
+                <button class="platform-tag platform-selector js-like" data-active=""
+                        data-filter=":kailleraprotocol/jsMain">js</button>
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter=":kailleraprotocol/jvmMain">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kailleraprotocol/commonMain"
+                                       data-filter=":kailleraprotocol/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option js-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kailleraprotocol/jsMain"
+                                       data-filter=":kailleraprotocol/jsMain"/>
+                                <span class="checkbox--icon"></span>
+                                js
+                            </label>
+                        </li>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":kailleraprotocol/jvmMain"
+                                       data-filter=":kailleraprotocol/jvmMain"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    kailleraprotocol
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="kailleraprotocol::org.emulinker.kaillera.protocol.v086////PointingToDeclaration//1430742752">
+  <div class="breadcrumbs"><a href="../../index.html">kailleraprotocol</a><span class="delimiter">/</span><span class="current">org.emulinker.kaillera.protocol.v086</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-2089064270%2FClasslikes%2F369194308" anchor-label="Ack" id="-2089064270%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-ack/index.html"><span><span>Ack</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2089064270%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-ack/index.html">Ack</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1420070075%2FClasslikes%2F369194308" anchor-label="AllReady" id="-1420070075%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-all-ready/index.html"><span>All</span><wbr></wbr><span><span>Ready</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1420070075%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-all-ready/index.html">AllReady</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1166901047%2FClasslikes%2F369194308" anchor-label="CachedGameData" id="-1166901047%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-cached-game-data/index.html"><span>Cached</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1166901047%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-cached-game-data/index.html">CachedGameData</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>key<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-client-message/index.html">ClientMessage</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1300265937%2FClasslikes%2F369194308" anchor-label="Chat" id="-1300265937%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-chat/index.html"><span><span>Chat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1300265937%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-chat/index.html">Chat</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1265120124%2FClasslikes%2F369194308" anchor-label="ChatNotification" id="-1265120124%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-chat-notification/index.html"><span>Chat</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1265120124%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-chat-notification/index.html">ChatNotification</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-chat/index.html">Chat</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="459656932%2FClasslikes%2F369194308" anchor-label="ChatRequest" id="459656932%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-chat-request/index.html"><span>Chat</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="459656932%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-chat-request/index.html">ChatRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-chat/index.html">Chat</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1490864797%2FClasslikes%2F369194308" anchor-label="ClientAck" id="1490864797%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-client-ack/index.html"><span>Client</span><wbr></wbr><span><span>Ack</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1490864797%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-client-ack/index.html">ClientAck</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-ack/index.html">Ack</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="576821855%2FClasslikes%2F369194308" anchor-label="ClientMessage" id="576821855%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-client-message/index.html"><span>Client</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="576821855%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1311790383%2FClasslikes%2F369194308" anchor-label="CloseGame" id="-1311790383%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-close-game/index.html"><span>Close</span><wbr></wbr><span><span>Game</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1311790383%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-close-game/index.html">CloseGame</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gameId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1466269707%2FClasslikes%2F369194308" anchor-label="ConnectionRejected" id="1466269707%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-connection-rejected/index.html"><span>Connection</span><wbr></wbr><span><span>Rejected</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1466269707%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-connection-rejected/index.html">ConnectionRejected</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-153553735%2FClasslikes%2F369194308" anchor-label="CreateGame" id="-153553735%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-create-game/index.html"><span>Create</span><wbr></wbr><span><span>Game</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-153553735%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-create-game/index.html">CreateGame</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="552254990%2FClasslikes%2F369194308" anchor-label="CreateGameNotification" id="552254990%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-create-game-notification/index.html"><span>Create</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="552254990%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-create-game-notification/index.html">CreateGameNotification</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>romName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>clientType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gameId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-create-game/index.html">CreateGame</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1945145114%2FClasslikes%2F369194308" anchor-label="CreateGameRequest" id="1945145114%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-create-game-request/index.html"><span>Create</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1945145114%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-create-game-request/index.html">CreateGameRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>romName<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-create-game/index.html">CreateGame</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1241098845%2FClasslikes%2F369194308" anchor-label="GameChat" id="1241098845%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-game-chat/index.html"><span>Game</span><wbr></wbr><span><span>Chat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1241098845%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-game-chat/index.html">GameChat</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="865344946%2FClasslikes%2F369194308" anchor-label="GameChatNotification" id="865344946%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-game-chat-notification/index.html"><span>Game</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="865344946%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-game-chat-notification/index.html">GameChatNotification</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-game-chat/index.html">GameChat</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="499841270%2FClasslikes%2F369194308" anchor-label="GameChatRequest" id="499841270%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-game-chat-request/index.html"><span>Game</span><wbr></wbr><span>Chat</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="499841270%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-game-chat-request/index.html">GameChatRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-game-chat/index.html">GameChat</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-76190133%2FClasslikes%2F369194308" anchor-label="GameData" id="-76190133%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-game-data/index.html"><span>Game</span><wbr></wbr><span><span>Data</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-76190133%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-game-data/index.html">GameData</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gameData<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a></div><div class="brief "><p class="paragraph">A message sent by both the client and server, which contains game input data as a <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-byte-array/index.html">ByteArray</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-414708945%2FClasslikes%2F369194308" anchor-label="GameKick" id="-414708945%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-game-kick/index.html"><span>Game</span><wbr></wbr><span><span>Kick</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-414708945%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-game-kick/index.html">GameKick</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-523837949%2FClasslikes%2F369194308" anchor-label="GameStatus" id="-523837949%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-game-status/index.html"><span>Game</span><wbr></wbr><span><span>Status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-523837949%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-game-status/index.html">GameStatus</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gameId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gameStatus<span class="token operator">: </span><a href="../org.emulinker.kaillera.model/-game-status/index.html">GameStatus</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numPlayers<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>maxPlayers<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-886545108%2FClasslikes%2F369194308" anchor-label="InformationMessage" id="-886545108%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-information-message/index.html"><span>Information</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-886545108%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-information-message/index.html">InformationMessage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>source<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1943237429%2FClasslikes%2F369194308" anchor-label="JoinGame" id="-1943237429%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-join-game/index.html"><span>Join</span><wbr></wbr><span><span>Game</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1943237429%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-join-game/index.html">JoinGame</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-489632992%2FClasslikes%2F369194308" anchor-label="JoinGameNotification" id="-489632992%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-join-game-notification/index.html"><span>Join</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-489632992%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-join-game-notification/index.html">JoinGameNotification</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gameId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>ping<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-duration/index.html">Duration</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>connectionType<span class="token operator">: </span><a href="../org.emulinker.kaillera.model/-connection-type/index.html">ConnectionType</a></span></span><span class="token punctuation">)</span> : <a href="-join-game/index.html">JoinGame</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-877191480%2FClasslikes%2F369194308" anchor-label="JoinGameRequest" id="-877191480%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-join-game-request/index.html"><span>Join</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-877191480%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-join-game-request/index.html">JoinGameRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>gameId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>connectionType<span class="token operator">: </span><a href="../org.emulinker.kaillera.model/-connection-type/index.html">ConnectionType</a></span></span><span class="token punctuation">)</span> : <a href="-join-game/index.html">JoinGame</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="66094675%2FClasslikes%2F369194308" anchor-label="KeepAlive" id="66094675%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-keep-alive/index.html"><span>Keep</span><wbr></wbr><span><span>Alive</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="66094675%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-keep-alive/index.html">KeepAlive</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>value<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">12</span></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2030896996%2FClasslikes%2F369194308" anchor-label="MessageFactory" id="2030896996%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-message-factory/index.html"><span>Message</span><wbr></wbr><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2030896996%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-message-factory/index.html">MessageFactory</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1742268138%2FClasslikes%2F369194308" anchor-label="MessageFormatException" id="-1742268138%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-message-format-exception/index.html"><span>Message</span><wbr></wbr><span>Format</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1742268138%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-message-format-exception/index.html">MessageFormatException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-exception/index.html">Exception</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2025990338%2FClasslikes%2F369194308" anchor-label="MessageSerializer" id="2025990338%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-message-serializer/index.html"><span>Message</span><wbr></wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2025990338%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-message-serializer/index.html">MessageSerializer</a><span class="token operator">&lt;</span><a href="-message-serializer/index.html">T</a><span class="token operator"> : </span><a href="-v086-message/index.html">V086Message</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1716429975%2FClasslikes%2F369194308" anchor-label="PlayerDrop" id="1716429975%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-player-drop/index.html"><span>Player</span><wbr></wbr><span><span>Drop</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1716429975%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-player-drop/index.html">PlayerDrop</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1878102252%2FClasslikes%2F369194308" anchor-label="PlayerDropNotification" id="1878102252%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-player-drop-notification/index.html"><span>Player</span><wbr></wbr><span>Drop</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1878102252%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-player-drop-notification/index.html">PlayerDropNotification</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>playerNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-player-drop/index.html">PlayerDrop</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1446188676%2FClasslikes%2F369194308" anchor-label="PlayerDropRequest" id="-1446188676%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-player-drop-request/index.html"><span>Player</span><wbr></wbr><span>Drop</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1446188676%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-player-drop-request/index.html">PlayerDropRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-player-drop/index.html">PlayerDrop</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-70522256%2FClasslikes%2F369194308" anchor-label="PlayerInformation" id="-70522256%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-player-information/index.html"><span>Player</span><wbr></wbr><span><span>Information</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-70522256%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-player-information/index.html">PlayerInformation</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>players<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-player-information/-player/index.html">PlayerInformation.Player</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-100407016%2FClasslikes%2F369194308" anchor-label="Quit" id="-100407016%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-quit/index.html"><span><span>Quit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-100407016%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-quit/index.html">Quit</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="843068870%2FClasslikes%2F369194308" anchor-label="QuitGame" id="843068870%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-quit-game/index.html"><span>Quit</span><wbr></wbr><span><span>Game</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="843068870%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-quit-game/index.html">QuitGame</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-618671205%2FClasslikes%2F369194308" anchor-label="QuitGameNotification" id="-618671205%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-quit-game-notification/index.html"><span>Quit</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-618671205%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-quit-game-notification/index.html">QuitGameNotification</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-quit-game/index.html">QuitGame</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1501394285%2FClasslikes%2F369194308" anchor-label="QuitGameRequest" id="1501394285%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-quit-game-request/index.html"><span>Quit</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1501394285%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-quit-game-request/index.html">QuitGameRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-quit-game/index.html">QuitGame</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="434576365%2FClasslikes%2F369194308" anchor-label="QuitNotification" id="434576365%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-quit-notification/index.html"><span>Quit</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="434576365%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-quit-notification/index.html">QuitNotification</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-quit/index.html">Quit</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1730493989%2FClasslikes%2F369194308" anchor-label="QuitRequest" id="-1730493989%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-quit-request/index.html"><span>Quit</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1730493989%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-quit-request/index.html">QuitRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span> : <a href="-quit/index.html">Quit</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1905745387%2FClasslikes%2F369194308" anchor-label="ServerAck" id="-1905745387%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-server-ack/index.html"><span>Server</span><wbr></wbr><span><span>Ack</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1905745387%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-server-ack/index.html">ServerAck</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val2<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">1</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val3<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val4<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">3</span></span></span><span class="token punctuation">)</span> : <a href="-ack/index.html">Ack</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1992619479%2FClasslikes%2F369194308" anchor-label="ServerMessage" id="1992619479%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-server-message/index.html"><span>Server</span><wbr></wbr><span><span>Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1992619479%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-884559086%2FClasslikes%2F369194308" anchor-label="ServerStatus" id="-884559086%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-server-status/index.html"><span>Server</span><wbr></wbr><span><span>Status</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-884559086%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-server-status/index.html">ServerStatus</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>users<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-server-status/-user/index.html">ServerStatus.User</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>games<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="-server-status/-game/index.html">ServerStatus.Game</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-182741849%2FClasslikes%2F369194308" anchor-label="StartGame" id="-182741849%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-start-game/index.html"><span>Start</span><wbr></wbr><span><span>Game</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-182741849%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">class </span><a href="-start-game/index.html">StartGame</a> : <a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-351868676%2FClasslikes%2F369194308" anchor-label="StartGameNotification" id="-351868676%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-start-game-notification/index.html"><span>Start</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Notification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-351868676%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-start-game-notification/index.html">StartGameNotification</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>numPlayers<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>playerNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>val1<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-start-game/index.html">StartGame</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1247492244%2FClasslikes%2F369194308" anchor-label="StartGameRequest" id="-1247492244%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-start-game-request/index.html"><span>Start</span><wbr></wbr><span>Game</span><wbr></wbr><span><span>Request</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1247492244%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-start-game-request/index.html">StartGameRequest</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-start-game/index.html">StartGame</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1368307636%2FClasslikes%2F1430742752" anchor-label="StringUtil" id="1368307636%2FClasslikes%2F1430742752" data-filterable-set=":kailleraprotocol/commonMain,:kailleraprotocol/jsMain,:kailleraprotocol/jvmMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain,:kailleraprotocol/jsMain,:kailleraprotocol/jvmMain" data-filterable-set=":kailleraprotocol/commonMain,:kailleraprotocol/jsMain,:kailleraprotocol/jvmMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-string-util/index.html"><span>String</span><wbr></wbr><span><span>Util</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1368307636%2FClasslikes%2F1430742752"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain" data-active="" data-toggle=":kailleraprotocol/commonMain">common</button><button class="platform-bookmark" data-filterable-current=":kailleraprotocol/jsMain" data-filterable-set=":kailleraprotocol/jsMain" data-toggle=":kailleraprotocol/jsMain">js</button><button class="platform-bookmark" data-filterable-current=":kailleraprotocol/jvmMain" data-filterable-set=":kailleraprotocol/jvmMain" data-toggle=":kailleraprotocol/jvmMain">jvm</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">expect </span><span class="token keyword">object </span><a href="-string-util/index.html">StringUtil</a></div></div><div class="content sourceset-dependent-content" data-togglable=":kailleraprotocol/jsMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-string-util/index.html">StringUtil</a></div></div><div class="content sourceset-dependent-content" data-togglable=":kailleraprotocol/jvmMain"><div class="symbol monospace"><span class="token keyword">actual </span><span class="token keyword">object </span><a href="-string-util/index.html">StringUtil</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1845356380%2FClasslikes%2F1901396710" anchor-label="TextDecoder" id="-1845356380%2FClasslikes%2F1901396710" data-filterable-set=":kailleraprotocol/jsMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/jsMain" data-filterable-set=":kailleraprotocol/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-text-decoder/index.html"><span>Text</span><wbr></wbr><span><span>Decoder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1845356380%2FClasslikes%2F1901396710"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kailleraprotocol/jsMain" data-filterable-set=":kailleraprotocol/jsMain" data-active="" data-toggle=":kailleraprotocol/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/jsMain"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">class </span><a href="-text-decoder/index.html">TextDecoder</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">label<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>definedExternally</span></span><span class="token punctuation">)</span></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-698260788%2FClasslikes%2F1901396710" anchor-label="TextEncoder" id="-698260788%2FClasslikes%2F1901396710" data-filterable-set=":kailleraprotocol/jsMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/jsMain" data-filterable-set=":kailleraprotocol/jsMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-text-encoder/index.html"><span>Text</span><wbr></wbr><span><span>Encoder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-698260788%2FClasslikes%2F1901396710"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted  with-platform-tabs" data-platform-hinted="data-platform-hinted">
+                    <div class="platform-bookmarks-row" data-toggle-list="data-toggle-list"><button class="platform-bookmark" data-filterable-current=":kailleraprotocol/jsMain" data-filterable-set=":kailleraprotocol/jsMain" data-active="" data-toggle=":kailleraprotocol/jsMain">js</button></div>
+<div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/jsMain"><div class="symbol monospace"><span class="token keyword">external </span><span class="token keyword">class </span><a href="-text-encoder/index.html">TextEncoder</a></div></div>                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="595845338%2FClasslikes%2F369194308" anchor-label="UserInformation" id="595845338%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-user-information/index.html"><span>User</span><wbr></wbr><span><span>Information</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="595845338%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-user-information/index.html">UserInformation</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>clientType<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>connectionType<span class="token operator">: </span><a href="../org.emulinker.kaillera.model/-connection-type/index.html">ConnectionType</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-client-message/index.html">ClientMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-36689005%2FClasslikes%2F369194308" anchor-label="UserJoined" id="-36689005%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-user-joined/index.html"><span>User</span><wbr></wbr><span><span>Joined</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-36689005%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-user-joined/index.html">UserJoined</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">var </span>messageNumber<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>username<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>userId<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>ping<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-duration/index.html">Duration</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>connectionType<span class="token operator">: </span><a href="../org.emulinker.kaillera.model/-connection-type/index.html">ConnectionType</a></span></span><span class="token punctuation">)</span> : <a href="-v086-message/index.html">V086Message</a>, <a href="-server-message/index.html">ServerMessage</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1319547987%2FClasslikes%2F369194308" anchor-label="V086Bundle" id="-1319547987%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-v086-bundle/index.html"><span><span>V086Bundle</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1319547987%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">sealed </span><span class="token keyword">interface </span><a href="-v086-bundle/index.html">V086Bundle</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1938635579%2FClasslikes%2F369194308" anchor-label="V086BundleSerializer" id="1938635579%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-v086-bundle-serializer/index.html"><span>V086Bundle</span><wbr></wbr><span><span>Serializer</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1938635579%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">object </span><a href="-v086-bundle-serializer/index.html">V086BundleSerializer</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1867686924%2FClasslikes%2F369194308" anchor-label="V086Message" id="1867686924%2FClasslikes%2F369194308" data-filterable-set=":kailleraprotocol/commonMain"></a>
+          <div class="table-row" data-filterable-current=":kailleraprotocol/commonMain" data-filterable-set=":kailleraprotocol/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-v086-message/index.html"><span><span>V086Message</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1867686924%2FClasslikes%2F369194308"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":kailleraprotocol/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-v086-message/index.html">V086Message</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
