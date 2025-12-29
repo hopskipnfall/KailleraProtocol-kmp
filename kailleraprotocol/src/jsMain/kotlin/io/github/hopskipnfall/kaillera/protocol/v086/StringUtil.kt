@@ -65,7 +65,7 @@ actual object StringUtil {
 
 // External declarations for JS TextEncoder/Decoder if not available in stdlib for JS target yet
 // (Kotlin 2.1 might have them? No, usually browser APIs).
-external class TextEncoder() {
+external class TextEncoder {
   fun encode(input: String): ByteArray
 }
 

@@ -1,6 +1,8 @@
 package io.github.hopskipnfall.kaillera.protocol.netty.v086
 
 import com.google.common.truth.Truth.assertThat
+import io.github.hopskipnfall.kaillera.protocol.connection.ConnectMessage
+import io.github.hopskipnfall.kaillera.protocol.netty.connection.NettyConnectMessageFactory
 import io.github.hopskipnfall.kaillera.protocol.netty.v086.MessageTestUtils.assertBufferContainsExactly
 import io.github.hopskipnfall.kaillera.protocol.v086.MessageFactory
 import io.github.hopskipnfall.kaillera.protocol.v086.V086Message
@@ -9,32 +11,45 @@ import java.nio.ByteBuffer
 import java.nio.ByteOrder.LITTLE_ENDIAN
 import java.nio.charset.Charset
 import kotlinx.io.Buffer
+import kotlinx.io.write
 import org.junit.BeforeClass
 import org.junit.Test
 
-// abstract class ConnectMessageTest<K : ConnectMessage> : ProtocolBaseTest() {
-//  abstract val message: K
-//  abstract val byteString: String
-//
-//  @Test
-//  fun parse() {
-//    val byteBuf = Unpooled.buffer(4096)
-//    byteBuf.writeBytes(hexStringToByteBuffer(byteString))
-//
-//    val deserialized = ConnectMessage.parse(byteBuf)
-//
-//    assertThat(deserialized.getOrThrow()).isEqualTo(message)
-//    assertThat(byteBuf.readableBytes()).isEqualTo(0)
-//  }
-//
-//  @Test
-//  fun write() {
-//    val byteBuf = Unpooled.buffer(4096)
-//    message.writeTo(byteBuf)
-//
-//    assertBufferContainsExactly(byteBuf, byteString)
-//  }
-// }
+abstract class NewConnectMessageTest<K : ConnectMessage> : ProtocolBaseTest() {
+  abstract val message: K
+  abstract val byteString: String
+
+  @OptIn(ExperimentalStdlibApi::class)
+  @Test
+  fun read() {
+    // TODO
+  }
+
+  @Test
+  fun write() {
+    // TODO
+  }
+
+  @Test
+  fun nettyRead() {
+    val byteBuf = Unpooled.buffer(4096)
+    byteBuf.writeBytes(hexStringToByteBuffer(byteString))
+
+    val deserialized = NettyConnectMessageFactory.read(byteBuf)
+
+    assertThat(deserialized).isEqualTo(message)
+    assertThat(byteBuf.readableBytes()).isEqualTo(0)
+  }
+
+  @Test
+  fun nettyWrite() {
+    val byteBuf = Unpooled.buffer(4096)
+    NettyConnectMessageFactory.write(byteBuf, message)
+
+    assertBufferContainsExactly(byteBuf, byteString)
+    byteBuf.release()
+  }
+}
 
 abstract class ProtocolBaseTest {
   companion object {
@@ -60,7 +75,7 @@ abstract class NewV086MessageTest<K : V086Message> : ProtocolBaseTest() {
   }
 
   @Test
-  fun ktxRead() {
+  fun read() {
     val buffer = Buffer()
     message.writeBodyTo(buffer, charset = globalCharset.name())
 
@@ -77,7 +92,7 @@ abstract class NewV086MessageTest<K : V086Message> : ProtocolBaseTest() {
   }
 
   @Test
-  fun ktxWrite() {
+  fun write() {
     val buffer = Buffer()
     message.writeBodyTo(buffer, charset = globalCharset.name())
 
@@ -131,6 +146,5 @@ fun hexStringToByteBuffer(hex: String): ByteBuffer {
   buffer.order(LITTLE_ENDIAN)
   buffer.put(bytes)
   buffer.position(0)
-  //    buffer.limit(hex.length / 2)
   return buffer
 }
