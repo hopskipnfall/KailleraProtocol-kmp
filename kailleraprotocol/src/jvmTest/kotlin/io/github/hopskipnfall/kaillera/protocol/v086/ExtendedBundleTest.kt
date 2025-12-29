@@ -24,10 +24,7 @@ class ExtendedBundleTest {
       val buf = Unpooled.buffer(4096)
       buf.writeBytes(hexStringToByteBuffer(byteString))
       val oldBundle =
-        NettyV086BundleSerializer.read(
-          buf,
-          charset = ProtocolBaseTest.Companion.globalCharset.name(),
-        )
+        NettyV086BundleSerializer.read(buf, charset = ProtocolBaseTest.Companion.globalCharset)
       println(oldBundle)
     }
   }

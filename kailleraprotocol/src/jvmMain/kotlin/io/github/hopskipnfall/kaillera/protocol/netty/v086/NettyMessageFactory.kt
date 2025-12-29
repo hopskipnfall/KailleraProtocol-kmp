@@ -2,6 +2,7 @@ package io.github.hopskipnfall.kaillera.protocol.netty.v086
 
 import io.github.hopskipnfall.kaillera.protocol.v086.V086Message
 import io.netty.buffer.ByteBuf
+import java.nio.charset.Charset
 
 object NettyMessageFactory {
   internal val serializers: Array<NettyMessageSerializer<*>?> =
@@ -38,16 +39,17 @@ object NettyMessageFactory {
     messageNumber: Int,
     messageTypeId: Byte,
     buffer: ByteBuf,
-    charset: String,
-  ): V086Message? {
+    charset: Charset,
+  ): V086Message {
     val id = messageTypeId.toInt()
-    val serializer = serializers[id]
-    return serializer?.read(buffer, messageNumber, charset)
+    val serializer = checkNotNull(serializers[id]) { "Unknown message type id: $id" }
+    return serializer.read(buffer, messageNumber, charset.name())
   }
 
-  fun write(buffer: ByteBuf, message: V086Message, charset: String) {
+  fun write(buffer: ByteBuf, message: V086Message, charset: Charset) {
     val id = message.messageTypeId.toInt()
     val serializer = serializers[id] as? NettyMessageSerializer<V086Message>
-    serializer?.write(buffer, message, charset)
+    checkNotNull(serializer) { "Unknown message type id: $id" }
+      .write(buffer, message, charset.name())
   }
 }
