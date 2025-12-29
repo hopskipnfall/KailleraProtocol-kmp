@@ -36,7 +36,21 @@ import org.junit.Test
 //  }
 // }
 
-abstract class NewV086MessageTest<K : V086Message> {
+abstract class ProtocolBaseTest {
+  companion object {
+    protected const val MESSAGE_NUMBER = 42
+
+    lateinit var globalCharset: Charset
+
+    @BeforeClass
+    @JvmStatic
+    fun setup() {
+      globalCharset = Charset.forName("Shift_JIS")
+    }
+  }
+}
+
+abstract class NewV086MessageTest<K : V086Message> : ProtocolBaseTest() {
   abstract val message: K
   abstract val byteString: String
 
@@ -95,18 +109,6 @@ abstract class NewV086MessageTest<K : V086Message> {
 
     assertThat(byteBuf.readableBytes()).isEqualTo(message.bodyBytes)
     assertBufferContainsExactly(byteBuf, byteString)
-  }
-
-  companion object {
-    protected const val MESSAGE_NUMBER = 42
-
-    lateinit var globalCharset: Charset
-
-    @BeforeClass
-    @JvmStatic
-    fun setup() {
-      globalCharset = Charset.forName("Shift_JIS")
-    }
   }
 }
 
