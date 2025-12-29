@@ -62,7 +62,7 @@ abstract class NewV086MessageTest<K : V086Message> : ProtocolBaseTest() {
   @Test
   fun ktxRead() {
     val buffer = Buffer()
-    message.writeTo(buffer, charset = globalCharset.name())
+    message.writeBodyTo(buffer, charset = globalCharset.name())
 
     val deserialized =
       MessageFactory.read(
@@ -73,15 +73,15 @@ abstract class NewV086MessageTest<K : V086Message> : ProtocolBaseTest() {
       )
 
     assertThat(deserialized).isEqualTo(message)
-    //    assertThat(buffer.remaining).isEqualTo(0)
+    assertThat(buffer.size).isEqualTo(0)
   }
 
   @Test
   fun ktxWrite() {
     val buffer = Buffer()
-    message.writeTo(buffer, charset = globalCharset.name())
+    message.writeBodyTo(buffer, charset = globalCharset.name())
 
-    //    assertThat(buffer.remaining).isEqualTo(newMessage.bodyBytes)
+    assertThat(buffer.size).isEqualTo(message.bodyBytes)
     assertBufferContainsExactly(buffer, byteString)
   }
 
