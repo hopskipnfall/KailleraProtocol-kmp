@@ -6,6 +6,9 @@ plugins {
 }
 
 allprojects {
+  group = "io.github.hopskipnfall"
+  version = "0.1.0-SNAPSHOT"
+
   repositories {
     google()
     mavenLocal()
