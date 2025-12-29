@@ -23,7 +23,7 @@ abstract class V086MessageTest<K : V086Message> {
     // Let's check original ProtocolBaseTest.
 
     // Original:
-    // val byteBuffer = V086Utils.hexStringToByteBuffer(byteString)
+    // val byteBuffer = hexStringToByteBuffer(byteString)
     // assertThat(message.bodyBytes).isEqualTo(byteBuffer.remaining())
 
     // This suggests byteString IS the body only?
