@@ -1,7 +1,7 @@
-package io.github.hopskipnfall.kaillera.protocol.netty.v086
+package io.github.hopskipnfall.kaillera.protocol.v086
 
 import com.google.common.truth.Truth.assertThat
-import io.github.hopskipnfall.kaillera.protocol.v086.GameData
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyGameDataSerializer
 import io.github.hopskipnfall.kaillera.protocol.v086.TestUtils.hexStringToByteArray
 import io.netty.buffer.Unpooled
 import org.junit.Test

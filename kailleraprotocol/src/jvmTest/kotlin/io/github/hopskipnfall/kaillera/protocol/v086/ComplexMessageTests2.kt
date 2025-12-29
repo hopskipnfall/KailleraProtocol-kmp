@@ -1,14 +1,13 @@
-package io.github.hopskipnfall.kaillera.protocol.netty.v086
+package io.github.hopskipnfall.kaillera.protocol.v086
 
 import com.google.common.truth.Truth.assertThat
 import io.github.hopskipnfall.kaillera.protocol.model.ConnectionType
 import io.github.hopskipnfall.kaillera.protocol.model.GameStatus
 import io.github.hopskipnfall.kaillera.protocol.model.UserStatus
-import io.github.hopskipnfall.kaillera.protocol.v086.MessageSerializer
-import io.github.hopskipnfall.kaillera.protocol.v086.PlayerInformation
-import io.github.hopskipnfall.kaillera.protocol.v086.ServerStatus
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyPlayerInformationSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyServerStatusSerializer
 import io.github.hopskipnfall.kaillera.protocol.v086.TestUtils.hexStringToByteArray
-import io.github.hopskipnfall.kaillera.protocol.v086.V086Message
+import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.io.Buffer
@@ -35,8 +34,8 @@ class ComplexMessageTests2 {
   }
 
   private fun <T : V086Message> testNetty(
-    readFunc: (io.netty.buffer.ByteBuf, Int, String) -> T,
-    writeFunc: (io.netty.buffer.ByteBuf, T, String) -> Unit,
+    readFunc: (ByteBuf, Int, String) -> T,
+    writeFunc: (ByteBuf, T, String) -> Unit,
     message: T,
     hexString: String,
   ) {

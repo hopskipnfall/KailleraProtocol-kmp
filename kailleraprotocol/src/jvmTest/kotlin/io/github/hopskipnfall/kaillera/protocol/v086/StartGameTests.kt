@@ -1,12 +1,9 @@
-package io.github.hopskipnfall.kaillera.protocol.netty.v086
+package io.github.hopskipnfall.kaillera.protocol.v086
 
 import com.google.common.truth.Truth.assertThat
-import io.github.hopskipnfall.kaillera.protocol.v086.MessageSerializer
-import io.github.hopskipnfall.kaillera.protocol.v086.StartGame
-import io.github.hopskipnfall.kaillera.protocol.v086.StartGameNotification
-import io.github.hopskipnfall.kaillera.protocol.v086.StartGameRequest
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyStartGameSerializer
 import io.github.hopskipnfall.kaillera.protocol.v086.TestUtils.hexStringToByteArray
-import io.github.hopskipnfall.kaillera.protocol.v086.V086Message
+import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import kotlinx.io.Buffer
 import kotlinx.io.readByteArray
@@ -32,8 +29,8 @@ class StartGameTests {
   }
 
   private fun <T : V086Message> testNetty(
-    readFunc: (io.netty.buffer.ByteBuf, Int, String) -> T,
-    writeFunc: (io.netty.buffer.ByteBuf, T, String) -> Unit,
+    readFunc: (ByteBuf, Int, String) -> T,
+    writeFunc: (ByteBuf, T, String) -> Unit,
     message: T,
     hexString: String,
   ) {

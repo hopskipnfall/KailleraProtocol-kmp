@@ -1,20 +1,16 @@
-package io.github.hopskipnfall.kaillera.protocol.netty.v086
+package io.github.hopskipnfall.kaillera.protocol.v086
 
 import com.google.common.truth.Truth.assertThat
 import io.github.hopskipnfall.kaillera.protocol.model.GameStatus
-import io.github.hopskipnfall.kaillera.protocol.v086.AllReady
-import io.github.hopskipnfall.kaillera.protocol.v086.CachedGameData
-import io.github.hopskipnfall.kaillera.protocol.v086.CloseGame
-import io.github.hopskipnfall.kaillera.protocol.v086.GameKick
-import io.github.hopskipnfall.kaillera.protocol.v086.MessageSerializer
-import io.github.hopskipnfall.kaillera.protocol.v086.PlayerDrop
-import io.github.hopskipnfall.kaillera.protocol.v086.PlayerDropNotification
-import io.github.hopskipnfall.kaillera.protocol.v086.PlayerDropRequest
-import io.github.hopskipnfall.kaillera.protocol.v086.QuitGame
-import io.github.hopskipnfall.kaillera.protocol.v086.QuitGameNotification
-import io.github.hopskipnfall.kaillera.protocol.v086.QuitGameRequest
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyAllReadySerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyCachedGameDataSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyCloseGameSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyGameKickSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyGameStatusSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyPlayerDropSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyQuitGameSerializer
 import io.github.hopskipnfall.kaillera.protocol.v086.TestUtils.hexStringToByteArray
-import io.github.hopskipnfall.kaillera.protocol.v086.V086Message
+import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import kotlinx.io.Buffer
 import kotlinx.io.readByteArray
@@ -48,8 +44,8 @@ class SimpleMessageTests2 {
   }
 
   private fun <T : V086Message> testNetty(
-    readFunc: (io.netty.buffer.ByteBuf, Int, String) -> T,
-    writeFunc: (io.netty.buffer.ByteBuf, T, String) -> Unit,
+    readFunc: (ByteBuf, Int, String) -> T,
+    writeFunc: (ByteBuf, T, String) -> Unit,
     message: T,
     hexString: String,
   ) {
@@ -132,7 +128,7 @@ class SimpleMessageTests2 {
   @Test
   fun gameStatus() {
     val msg =
-      io.github.hopskipnfall.kaillera.protocol.v086.GameStatus(
+      GameStatus(
         messageNumber = 42,
         gameId = 13,
         val1 = 2345,

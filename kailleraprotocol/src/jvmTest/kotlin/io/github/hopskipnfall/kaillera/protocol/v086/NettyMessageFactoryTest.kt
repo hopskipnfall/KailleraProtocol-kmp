@@ -1,6 +1,8 @@
-package io.github.hopskipnfall.kaillera.protocol.netty.v086
+package io.github.hopskipnfall.kaillera.protocol.v086
 
 import com.google.common.truth.Truth.assertThat
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyMessageFactory
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyMessageSerializer
 import org.junit.Test
 
 class NettyMessageFactoryTest {

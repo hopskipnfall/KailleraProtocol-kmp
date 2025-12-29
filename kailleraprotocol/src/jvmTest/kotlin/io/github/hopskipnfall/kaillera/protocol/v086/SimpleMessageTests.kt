@@ -1,15 +1,12 @@
-package io.github.hopskipnfall.kaillera.protocol.netty.v086
+package io.github.hopskipnfall.kaillera.protocol.v086
 
 import com.google.common.truth.Truth.assertThat
-import io.github.hopskipnfall.kaillera.protocol.v086.ClientAck
-import io.github.hopskipnfall.kaillera.protocol.v086.KeepAlive
-import io.github.hopskipnfall.kaillera.protocol.v086.MessageSerializer
-import io.github.hopskipnfall.kaillera.protocol.v086.Quit
-import io.github.hopskipnfall.kaillera.protocol.v086.QuitNotification
-import io.github.hopskipnfall.kaillera.protocol.v086.QuitRequest
-import io.github.hopskipnfall.kaillera.protocol.v086.ServerAck
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyClientAckSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyKeepAliveSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyQuitSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyServerAckSerializer
 import io.github.hopskipnfall.kaillera.protocol.v086.TestUtils.hexStringToByteArray
-import io.github.hopskipnfall.kaillera.protocol.v086.V086Message
+import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import kotlinx.io.Buffer
 import kotlinx.io.readByteArray
@@ -35,8 +32,8 @@ class SimpleMessageTests {
   }
 
   private fun <T : V086Message> testNetty(
-    readFunc: (io.netty.buffer.ByteBuf, Int, String) -> T,
-    writeFunc: (io.netty.buffer.ByteBuf, T, String) -> Unit,
+    readFunc: (ByteBuf, Int, String) -> T,
+    writeFunc: (ByteBuf, T, String) -> Unit,
     message: T,
     hexString: String,
   ) {

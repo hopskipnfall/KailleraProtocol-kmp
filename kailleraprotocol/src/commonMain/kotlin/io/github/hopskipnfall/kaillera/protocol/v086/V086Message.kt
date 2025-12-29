@@ -15,6 +15,16 @@ abstract class V086Message {
   val bodyBytesPlusMessageIdType: Int
     get() = bodyBytes + 1
 
+  /**
+   * Writes the complete message to the [sink], including the header (message number, length,
+   * message type ID) and the body.
+   *
+   * The structure sent is:
+   * - Message Number (2 bytes, LE)
+   * - Length (2 bytes, LE): Body Bytes + 1 (for Message Type ID)
+   * - Message Type ID (1 byte)
+   * - Body (Variable)
+   */
   @Throws(MessageFormatException::class)
   fun writeTo(sink: Sink, charset: String) {
     sink.writeShortLe(messageNumber.toShort())
@@ -23,6 +33,10 @@ abstract class V086Message {
     writeBodyTo(sink, charset)
   }
 
+  /**
+   * Writes only the message body (payload) to the [sink]. This should NOT include the standard
+   * message header (message number, length, message type ID), as that is handled by [writeTo].
+   */
   abstract fun writeBodyTo(sink: Sink, charset: String)
 
   companion object {
@@ -51,8 +65,10 @@ abstract class V086Message {
         GameData.ID -> GameData.GameDataSerializer.read(source, messageNumber, charset)
         CachedGameData.ID ->
           CachedGameData.CachedGameDataSerializer.read(source, messageNumber, charset)
+
         UserInformation.ID ->
           UserInformation.UserInformationSerializer.read(source, messageNumber, charset)
+
         GameStatus.ID -> GameStatus.GameStatusSerializer.read(source, messageNumber, charset)
         InformationMessage.ID ->
           InformationMessage.InformationMessageSerializer.read(source, messageNumber, charset)

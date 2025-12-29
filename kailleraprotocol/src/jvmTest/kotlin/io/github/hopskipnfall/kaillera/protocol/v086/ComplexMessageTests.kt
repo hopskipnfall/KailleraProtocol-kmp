@@ -1,26 +1,17 @@
-package io.github.hopskipnfall.kaillera.protocol.netty.v086
+package io.github.hopskipnfall.kaillera.protocol.v086
 
 import com.google.common.truth.Truth.assertThat
 import io.github.hopskipnfall.kaillera.protocol.model.ConnectionType
-import io.github.hopskipnfall.kaillera.protocol.v086.Chat
-import io.github.hopskipnfall.kaillera.protocol.v086.ChatNotification
-import io.github.hopskipnfall.kaillera.protocol.v086.ChatRequest
-import io.github.hopskipnfall.kaillera.protocol.v086.ConnectionRejected
-import io.github.hopskipnfall.kaillera.protocol.v086.CreateGame
-import io.github.hopskipnfall.kaillera.protocol.v086.CreateGameNotification
-import io.github.hopskipnfall.kaillera.protocol.v086.CreateGameRequest
-import io.github.hopskipnfall.kaillera.protocol.v086.GameChat
-import io.github.hopskipnfall.kaillera.protocol.v086.GameChatNotification
-import io.github.hopskipnfall.kaillera.protocol.v086.GameChatRequest
-import io.github.hopskipnfall.kaillera.protocol.v086.InformationMessage
-import io.github.hopskipnfall.kaillera.protocol.v086.JoinGame
-import io.github.hopskipnfall.kaillera.protocol.v086.JoinGameNotification
-import io.github.hopskipnfall.kaillera.protocol.v086.JoinGameRequest
-import io.github.hopskipnfall.kaillera.protocol.v086.MessageSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyChatSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyConnectionRejectedSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyCreateGameSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyGameChatSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyInformationMessageSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyJoinGameSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyUserInformationSerializer
+import io.github.hopskipnfall.kaillera.protocol.netty.v086.NettyUserJoinedSerializer
 import io.github.hopskipnfall.kaillera.protocol.v086.TestUtils.hexStringToByteArray
-import io.github.hopskipnfall.kaillera.protocol.v086.UserInformation
-import io.github.hopskipnfall.kaillera.protocol.v086.UserJoined
-import io.github.hopskipnfall.kaillera.protocol.v086.V086Message
+import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.io.Buffer
@@ -52,8 +43,8 @@ class ComplexMessageTests {
   }
 
   private fun <T : V086Message> testNetty(
-    readFunc: (io.netty.buffer.ByteBuf, Int, String) -> T,
-    writeFunc: (io.netty.buffer.ByteBuf, T, String) -> Unit,
+    readFunc: (ByteBuf, Int, String) -> T,
+    writeFunc: (ByteBuf, T, String) -> Unit,
     message: T,
     hexString: String,
   ) {
