@@ -33,10 +33,9 @@ object MessageFactory {
       ConnectionRejected.ConnectionRejectedSerializer, // 0x19
     )
 
-  fun read(source: Source, messageNumber: Int, messageTypeId: Byte, charset: String): V086Message? {
+  fun read(source: Source, messageNumber: Int, messageTypeId: Byte, charset: String): V086Message {
     val id = messageTypeId.toInt()
-    if (id < 0 || id >= serializers.size) return null
-    val serializer = serializers[id]
-    return serializer?.read(source, messageNumber, charset)
+    val serializer = requireNotNull(serializers[id]) { "Unknown message type id: $id" }
+    return serializer.read(source, messageNumber, charset)
   }
 }

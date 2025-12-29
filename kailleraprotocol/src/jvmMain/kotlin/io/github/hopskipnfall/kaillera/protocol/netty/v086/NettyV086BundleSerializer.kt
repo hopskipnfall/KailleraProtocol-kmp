@@ -3,10 +3,11 @@ package io.github.hopskipnfall.kaillera.protocol.netty.v086
 import io.github.hopskipnfall.kaillera.protocol.v086.V086Bundle
 import io.github.hopskipnfall.kaillera.protocol.v086.V086Message
 import io.netty.buffer.ByteBuf
+import java.nio.charset.Charset
 
 object NettyV086BundleSerializer {
 
-  fun write(buffer: ByteBuf, bundle: V086Bundle, charset: String) {
+  fun write(buffer: ByteBuf, bundle: V086Bundle, charset: Charset) {
     val messages = bundle.messages
     buffer.writeByte(messages.size)
     for (message in messages) {
@@ -31,7 +32,7 @@ object NettyV086BundleSerializer {
   }
 
   // Parse logic adapted from legacy
-  fun read(buffer: ByteBuf, lastMessageId: Int = -1, charset: String): V086Bundle {
+  fun read(buffer: ByteBuf, lastMessageId: Int = -1, charset: Charset): V086Bundle {
     if (buffer.readableBytes() < 5) {
       throw IllegalArgumentException("Invalid buffer length: " + buffer.readableBytes())
     }

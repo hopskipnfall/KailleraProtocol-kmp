@@ -32,7 +32,11 @@ class V086BundleTestShiftJis {
 
     when (
       val parsedBundle =
-        NettyV086BundleSerializer.read(buf, params.lastMessageNumber, charset = "Shift_JIS")
+        NettyV086BundleSerializer.read(
+          buf,
+          params.lastMessageNumber,
+          charset = Charset.forName("Shift_JIS"),
+        )
     ) {
       is V086Bundle.Single -> {
         assertThat(parsedBundle.message).isEqualTo(params.expectedMessages.single())
@@ -267,7 +271,11 @@ class V086BundleTestShiftUtf8 {
 
     when (
       val parsedBundle =
-        NettyV086BundleSerializer.read(buf, params.lastMessageNumber, charset = "UTF-8")
+        NettyV086BundleSerializer.read(
+          buf,
+          params.lastMessageNumber,
+          charset = StandardCharsets.UTF_8,
+        )
     ) {
       is V086Bundle.Single -> {
         assertThat(parsedBundle.message).isEqualTo(params.expectedMessages.single())

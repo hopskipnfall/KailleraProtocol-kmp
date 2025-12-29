@@ -55,7 +55,7 @@ abstract class V086MessageTest<K : V086Message> : ProtocolBaseTest() {
         message.messageNumber,
         message.messageTypeId,
         byteBuf,
-        charset = globalCharset.name(),
+        charset = globalCharset,
       )
     assertThat(deserialized).isEqualTo(message)
     assertThat(byteBuf.readableBytes()).isEqualTo(0)
@@ -65,7 +65,7 @@ abstract class V086MessageTest<K : V086Message> : ProtocolBaseTest() {
   fun nettyWrite() {
     val byteBuf = Unpooled.buffer(4096)
 
-    NettyMessageFactory.write(byteBuf, message, charset = globalCharset.name())
+    NettyMessageFactory.write(byteBuf, message, charset = globalCharset)
 
     assertThat(byteBuf.readableBytes()).isEqualTo(message.bodyBytes)
     MessageTestUtils.assertBufferContainsExactly(byteBuf, byteString)
