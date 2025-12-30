@@ -1,8 +1,8 @@
 plugins {
-  kotlin("multiplatform") version "2.1.0" apply false
-  id("org.jetbrains.dokka") version "2.0.0" apply false
+  kotlin("multiplatform") version "2.3.0" apply false
+  id("org.jetbrains.dokka") version "2.1.0" apply false
 
-  id("com.diffplug.spotless") version "7.2.1"
+  id("com.diffplug.spotless") version "8.1.0"
 }
 
 allprojects {
