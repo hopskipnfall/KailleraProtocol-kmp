@@ -1,6 +1,6 @@
 # KailleraProtocol-kmp
 
-This is a Kotlin Multiplatform library for efficiently working with Kaillera protocol messages accurately across various languages. It is used by the server [EmuLinker-K (elk)](https://github.com/hopskipnfall/EmuLinker-K).
+This is a Kotlin Multiplatform library for efficiently working with Kaillera protocol messages accurately across various languages.
 
 
 ## Supported Targets
